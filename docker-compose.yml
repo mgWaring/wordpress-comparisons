@@ -1,0 +1,54 @@
+version: "3"
+services:
+  nginx:
+    build:
+      context: docker
+      dockerfile: nginx/dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - internal
+    volumes:
+      - .:/var/www/html/
+      - ./docker/nginx/logs:/var/log/nginx/
+
+  php:
+    build:
+      context: docker
+      dockerfile: php/dockerfile
+    networks:
+      - internal
+    volumes:
+      - .:/var/www/html/
+      - ./docker/php/logs/php.log:/var/log/fpm-php.www.log
+
+  postgres:
+    image: postgres:13-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: db
+      POSTGRES_PASSWORD: db
+    networks:
+      - internal
+    volumes:
+      - db_data:/var/lib/postgresql/data
+#    healthcheck:
+#      test: ["CMD", "pg_isready", "-U", "craftcms", "-d", "dev_craftcms"]
+#      interval: 5s
+#      retries: 3
+
+#  redis:
+#    image: redis:5-alpine
+#    ports:
+#      - 6379:6379
+#    healthcheck:
+#      test: ["CMD", "redis-cli", "ping"]
+
+volumes:
+  db_data:
+
+networks:
+  internal:
+    driver: bridge
