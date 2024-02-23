@@ -1,0 +1,41 @@
+# Ignore WordPress core files
+wp-admin/
+wp-includes/
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backupbuddy_backups/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/wp-cache-config.php
+wp-content/plugins/hello.php
+
+# Ignore default WordPress configuration files
+wp-config.php
+/license.txt
+/readme.html
+
+# Ignore custom theme files if not relevant
+/wp-content/themes/your-theme-name/
+
+# Ignore custom plugin files if not relevant
+/wp-content/plugins/your-plugin-name/
+
+# Ignore WordPress configuration file for local development
+wp-config-local.php
+
+# Ignore log files
+*.log
+
+# Ignore miscellaneous files
+error_log
+.htaccess
+*.sql
+*.DS_Store
+
+# Ignore development-related files and directories
+/node_modules/
+/vendor/
+npm-debug.log
+yarn-error.log
+Gruntfile.js
+gulpfile.js
