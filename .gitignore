@@ -29,7 +29,7 @@ wp-config-local.php
 # Ignore miscellaneous files
 error_log
 .htaccess
-*.sql
+
 *.DS_Store
 
 # Ignore development-related files and directories
